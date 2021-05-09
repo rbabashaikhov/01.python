@@ -6,7 +6,7 @@
 
 numbers_list = [] #пустой список
 sum_numbers = 0 #сумма тех чисел из списка, сумма цифр которых делится нацело на 7
-for e in range(1000):
+for e in range(1001):
     if e % 2 != 0:
         e = e**3
         numbers_list.append(e)
