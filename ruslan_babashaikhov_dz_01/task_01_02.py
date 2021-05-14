@@ -3,34 +3,34 @@
 включать в сумму, так как 6 + 8 + 5 + 9 = 28 – делится нацело на 7. Внимание: использовать только арифметические
 операции! К каждому элементу списка добавить 17 и заново вычислить сумму тех чисел из этого списка, сумма цифр которых
 делится нацело на 7. Внимание: новый список не создавать!!!"""
-
-numbers_list = [] #пустой список
-sum_numbers = 0 #сумма тех чисел из списка, сумма цифр которых делится нацело на 7
+number_list = []
+total = 0
 for e in range(1001):
     if e % 2 != 0:
-        e = e**3
-        numbers_list.append(e)
-print(numbers_list) #выводим список из кубов нечетных чисел от 0 до 1000
-for x in numbers_list:
-    s = str(x)
-    i = 0
+        number_list.append(e ** 3)
+print('список из нечетных чисел: ', number_list)
+for i in range(len(number_list)):
     sub_total = 0
-    while i < len(s):
-        sub_total += int(s[i])
-        i += 1
-        if sub_total % 7 == 0:
-            sum_numbers += sub_total
-print('Сумма тех чисел из списка, сумма цифр которых делится нацело на 7: {}'.format(sum_numbers))
-for i in range(len(numbers_list)):
-    numbers_list[i] += 17
-print(numbers_list) #обновление списка
-for x in numbers_list:
-    s = str(x)
-    i = 0
+    e = number_list[i]
+
+    while e > 0:
+        sub_total += e % 10 #прибавляем последнюю цифру
+        e //= 10 #отделяем целое от деления на 10
+    if sub_total % 7 == 0:
+        print(number_list[i])
+        total += number_list[i] # суммируем то что делится на 7
+print(total)
+for i in range(len(number_list)): #обновляем список
+    number_list[i] += 17
+
+for i in range(len(number_list)):
     sub_total = 0
-    while i < len(s):
-        sub_total += int(s[i])
-        i += 1
-        if sub_total % 7 == 0:
-            sum_numbers += sub_total
-print('Сумма тех чисел из списка, сумма цифр которых делится нацело на 7: {}'.format(sum_numbers))
+    e = number_list[i]
+
+    while e > 0:
+        sub_total += e % 10 #прибавляем последнюю цифру
+        e //= 10 #отделяем целое от деления на 10
+    if sub_total % 7 == 0:
+
+        total += number_list[i] # суммируем то что делится на 7
+print(total)
