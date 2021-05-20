@@ -29,4 +29,3 @@ def get_jokes(n):
     return jokes_result
 n = int(input('Введите желаемое количество шуток: '))
 print(get_jokes(n))
-
