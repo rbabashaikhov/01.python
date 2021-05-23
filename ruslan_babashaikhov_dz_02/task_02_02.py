@@ -5,19 +5,30 @@
 Новый список не создавать! Сформировать из обработанного списка строку:
 в "05" часов "17" минут температура воздуха была "+05" градусов"""
 
-work_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
+my_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
 
 
-i = 0
-while i < len(work_list):
-
-    if work_list[i].isdigit() or work_list[i][1:].isdigit():
-        work_list[i] = work_list[i].zfill(2)
-
-        work_list.insert(i, '"')
-        work_list.insert(i + 2, '"')
-        i += 2
-
-    i += 1
-
-print(work_list)
+insert_list = []
+insert_number = 0
+for i, x in enumerate(my_list):
+    if ((x.startswith('+') or x.startswith('-')) and x[1:].isdigit()):
+        insert_list.append(i + insert_number)
+        insert_list.append(i + insert_number + 2)
+        my_list[i] = '{0}{1:02d}'.format(x[0], int(x[1:]))
+        insert_number += 2
+    if x.isdigit():
+        insert_list.append(i + insert_number)
+        insert_list.append(i + insert_number + 2)
+        my_list[i] = '{:02d}'.format(int(x))
+        insert_number += 2
+for i in insert_list:
+    my_list.insert(i, '"')
+my_list = list(' '.join(my_list))
+char_index = 0
+for i, char in enumerate(my_list):
+    if char == '"' and char_index % 2 == 0:
+        my_list.pop(i + 1)
+        char_index += 1
+    elif char == '"' and char_index % 2 == 1:
+        my_list.pop(i - 1)
+print(''.join(my_list))
