@@ -5,14 +5,8 @@
 Подумать, как получить имена сотрудников из элементов списка, как привести их к корректному виду. Можно ли при этом
 не создавать новый список? """
 person_list = ['инженер-конструктор Игорь', 'главный бухгалтер МАРИНА', 'токарь высшего разряда нИКОЛАй', 'директор аэлита']
-for e in person_list:
-    new_list = []
-    i = 0
-    while i < len(e.split(" "))-1:
-        new_list.append(e.split(" ")[i])
-        i += 1
-    new_list.append(e.split(" ")[i].title())
-    print(" ".join(new_list))
+for item in person_list:
+    print('Привет, {}!'.format(item.split(' ')[-1].title()))
 
 
 
