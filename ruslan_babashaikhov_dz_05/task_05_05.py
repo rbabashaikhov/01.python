@@ -4,11 +4,21 @@ src = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
 result = [23, 1, 3, 10, 4, 11]"""
 
 src = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
-result = []
+result = [23, 1, 3, 10, 4, 11]
 
-def numeration(src):
-    for i in range(1, len(src)):
-        if src[i] > src[i - 1]:
-            yield src[i]
+def uniq_numbers(src):
+    num_set = set()
+    for e in src:
 
-print(list(numeration(src)))
+        if e not in num_set:
+            num_set.add(e)
+        else:
+            num_set.remove(e)
+    for e in src:
+        if e in num_set:
+            yield e
+            num_set.remove(e)
+
+
+print(list(uniq_numbers(src)))
+
