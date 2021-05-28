@@ -10,10 +10,13 @@
 >>> next(odd_to_15)
 ...StopIteration..."""
 
-def nums_gen(max_num):
+def odd_nums(max_num):
     for x in range(1,max_num + 1,2):
         yield x
 
-max_num = int(input('Введите число: '))
-print(*nums_gen(max_num), sep='\n')
-print('...StopIteration...')
+odd_to_15 = odd_nums(15)
+print(type(odd_to_15))
+print(next(odd_to_15))
+print(list(odd_to_15))
+print(next(odd_to_15))
+
